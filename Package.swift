@@ -23,7 +23,7 @@ let package = Package(
         .library(name: "CNIOBoringSSL", type: .static, targets: ["CNIOBoringSSL"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-nio.git", .branch("master")),
+        .package(url: "https://github.com/apple/swift-nio.git", .revision("83350741083ec8a0b36e67108dd352b2fe1c37e6")),
     ],
     targets: [
         .target(name: "CNIOBoringSSL"),
