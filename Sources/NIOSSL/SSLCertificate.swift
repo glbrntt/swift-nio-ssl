@@ -13,8 +13,8 @@
 //===----------------------------------------------------------------------===//
 
 #if compiler(>=5.1)
-@_implementationOnly import CNIOBoringSSL
-@_implementationOnly import CNIOBoringSSLShims
+import CNIOBoringSSL
+import CNIOBoringSSLShims
 #else
 import CNIOBoringSSL
 import CNIOBoringSSLShims
@@ -58,7 +58,7 @@ public class NIOSSLCertificate {
     }
 
     private init(withOwnedReference ref: UnsafeMutablePointer<X509>) {
-        self._ref = UnsafeMutableRawPointer(ref) // erasing the type for @_implementationOnly import CNIOBoringSSL
+        self._ref = UnsafeMutableRawPointer(ref) // erasing the type for import CNIOBoringSSL
     }
 
     /// Create a NIOSSLCertificate from a file at a given path in either PEM or
@@ -159,7 +159,7 @@ public class NIOSSLCertificate {
     ///
     /// In general, however, this function should be avoided in favour of one of the convenience
     /// initializers, which ensure that the lifetime of the `X509` object is better-managed.
-    static func fromUnsafePointer(takingOwnership pointer: UnsafeMutablePointer<X509>) -> NIOSSLCertificate {
+    public static func fromUnsafePointer(takingOwnership pointer: UnsafeMutablePointer<X509>) -> NIOSSLCertificate {
         return NIOSSLCertificate(withOwnedReference: pointer)
     }
 

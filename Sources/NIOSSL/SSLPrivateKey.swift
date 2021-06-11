@@ -13,7 +13,7 @@
 //===----------------------------------------------------------------------===//
 
 #if compiler(>=5.1)
-@_implementationOnly import CNIOBoringSSL
+import CNIOBoringSSL
 #else
 import CNIOBoringSSL
 #endif
@@ -123,7 +123,7 @@ public class NIOSSLPrivateKey {
     }
 
     private init(withReference ref: UnsafeMutablePointer<EVP_PKEY>) {
-        self._ref = UnsafeMutableRawPointer(ref) // erasing the type for @_implementationOnly import CNIOBoringSSL
+        self._ref = UnsafeMutableRawPointer(ref) // erasing the type for import CNIOBoringSSL
     }
 
     /// A delegating initializer for `init(file:format:passphraseCallback)` and `init(file:format:)`.
@@ -280,7 +280,7 @@ public class NIOSSLPrivateKey {
     ///
     /// In general, however, this function should be avoided in favour of one of the convenience
     /// initializers, which ensure that the lifetime of the EVP_PKEY object is better-managed.
-    static internal func fromUnsafePointer(takingOwnership pointer: UnsafeMutablePointer<EVP_PKEY>) -> NIOSSLPrivateKey {
+    static public func fromUnsafePointer(takingOwnership pointer: UnsafeMutablePointer<EVP_PKEY>) -> NIOSSLPrivateKey {
         return NIOSSLPrivateKey(withReference: pointer)
     }
 
@@ -297,7 +297,7 @@ extension NIOSSLPrivateKey {
     /// X509 API in BoringSSL.
     ///
     /// The pointer provided to the closure is not valid beyond the lifetime of this method call.
-    private func withUnsafeDERBuffer<T>(_ body: (UnsafeRawBufferPointer) throws -> T) throws -> T {
+    public func withUnsafeDERBuffer<T>(_ body: (UnsafeRawBufferPointer) throws -> T) throws -> T {
         guard let bio = CNIOBoringSSL_BIO_new(CNIOBoringSSL_BIO_s_mem()) else {
             fatalError("Failed to malloc for a BIO handler")
         }

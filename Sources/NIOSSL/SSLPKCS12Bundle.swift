@@ -13,7 +13,7 @@
 //===----------------------------------------------------------------------===//
 
 #if compiler(>=5.1)
-@_implementationOnly import CNIOBoringSSL
+import CNIOBoringSSL
 #else
 import CNIOBoringSSL
 #endif

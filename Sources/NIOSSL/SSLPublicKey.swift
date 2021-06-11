@@ -13,7 +13,7 @@
 //===----------------------------------------------------------------------===//
 
 #if compiler(>=5.1)
-@_implementationOnly import CNIOBoringSSL
+import CNIOBoringSSL
 #else
 import CNIOBoringSSL
 #endif
@@ -32,7 +32,7 @@ public class NIOSSLPublicKey {
     }
 
     fileprivate init(withOwnedReference ref: UnsafeMutablePointer<EVP_PKEY>) {
-        self._ref = UnsafeMutableRawPointer(ref) // erasing the type for @_implementationOnly import CNIOBoringSSL
+        self._ref = UnsafeMutableRawPointer(ref) // erasing the type for import CNIOBoringSSL
     }
 
     deinit {

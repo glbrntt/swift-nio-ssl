@@ -14,8 +14,8 @@
 
 import NIO
 #if compiler(>=5.1)
-@_implementationOnly import CNIOBoringSSL
-@_implementationOnly import CNIOBoringSSLShims
+import CNIOBoringSSL
+import CNIOBoringSSLShims
 #else
 import CNIOBoringSSL
 import CNIOBoringSSLShims

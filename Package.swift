@@ -38,6 +38,7 @@ MANGLE_END */
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.19.0"),
     ],
     targets: [
+        .target(name: "MakeCert", dependencies: ["NIOSSL", "CNIOBoringSSL", "CNIOBoringSSLShims"]),
         .target(name: "CNIOBoringSSL"),
         .target(name: "CNIOBoringSSLShims", dependencies: ["CNIOBoringSSL"]),
         .target(name: "NIOSSL",
