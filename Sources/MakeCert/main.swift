@@ -92,7 +92,7 @@ func generateSelfSignedCert() -> (NIOSSLCertificate, NIOSSLPrivateKey) {
     CNIOBoringSSL_X509_set_notBefore(x, notBefore)
     CNIOBoringSSL_ASN1_TIME_free(notBefore)
 
-    now += 60 * 60 * 24 * 365 * 10 // Give ourselves ten years.
+    now += 60 * 60 * 24 * 365 * 1 // Give ourselves a year.
     let notAfter = CNIOBoringSSL_ASN1_TIME_new()!
     CNIOBoringSSL_ASN1_TIME_set(notAfter, now)
     CNIOBoringSSL_X509_set_notAfter(x, notAfter)
